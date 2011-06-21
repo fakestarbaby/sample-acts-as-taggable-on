@@ -22,4 +22,8 @@
 
 <br />
 
+<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+  <%= link_to tag.name, blogs_path(tag), :class => css_class %>
+<% end %>
+
 <%= link_to 'New Blog', new_blog_path %>

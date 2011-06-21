@@ -3,6 +3,7 @@ class BlogsController < ApplicationController
   # GET /blogs.xml
   def index
     @blogs = Blog.all
+    @tags = Blog.tag_counts_on(:languages)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +80,9 @@ class BlogsController < ApplicationController
       format.html { redirect_to(blogs_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def tag_cloud
+    @tags = Blog.tag_counts_on(:languages)
   end
 end
